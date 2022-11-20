@@ -15,25 +15,26 @@ Output: true
 Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
 */
 
-bool hasCycle(struct ListNode *head) {
-    typedef struct ListNode Node;
-    
-    Node* slow = head;//travels one node per iteration
-    Node* fast = head;//travels two nodws per iteration
-    
-    while(fast!=NULL)//if fast(first element) is not null 
-    {
-            fast = fast->next;//go to next element
-        if(fast!=NULL)
-        {
-            fast = fast->next;
-            slow = slow->next;
-        }
-        if(fast == slow) return true;
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
         
-        //Time Complexity: o(n)
+        while(fast!=null)
+        {
+            fast = fast.next;
+            if(fast!=null)
+            {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            if(fast == slow)return true;
+        }
+        return false;
+        
+        
+        //Time Complexity : o(n)
         //Space Complexity : o(1)
     }
-    return false;
-    
 }
