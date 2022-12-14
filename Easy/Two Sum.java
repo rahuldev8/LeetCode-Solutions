@@ -47,3 +47,31 @@ class Solution {
         return ans;
     }
 }
+
+//Efficient Approach
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        //HashMap Technique
+        Map<Integer, Integer> map  = new HashMap<>();
+
+        for(int i=0; i<nums.length; i++)
+        {
+            int comp = target - nums[i];
+
+            //checking the number which adds up to comp to get target
+            if(map.containsKey(comp))
+            //get will return the value of key, in this case it will store index
+                return new int[]{map.get(comp), i};
+            //else put the number in map with it's index
+            else    
+            map.put(nums[i], i);
+        }
+        //If no match found
+        return new int[]{-1, -1};
+
+        //Time Complexity : o(n)
+        //Space Compleity : o(n)
+        
+    }
+}
